@@ -7,7 +7,7 @@ import {
 const Gallery = ({imageUrls}) => 
     <GalleryContainer>
         {imageUrls.map(url =>
-            <Image url={url}/> 
+            <Image key={url} url={url}/> 
         )}
     </GalleryContainer>
 
