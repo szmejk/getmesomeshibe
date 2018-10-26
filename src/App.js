@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Gallery from './Components/Gallery'
+import Form from './Components/Form'
+
+
+const apiEndpoints = {
+  shibes: 'shibes',
+  cats: 'cats',
+  birds: 'birds',
+}
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      urls: [],
+    }
+  }
+
+  setUrls = (urls) => {
+    this.setState({urls: urls})
+  }
+
   render() {
+    const {urls} = this.state
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        <Form endpointNames= {apiEndpoints} setUrls = {this.setUrls}/>
+        <Gallery imageUrls = {urls}/>
+      </>
     );
   }
 }
